@@ -1,0 +1,11 @@
+dependencies:
+  override:
+    - bundler install --path vendor/bundle
+test:
+  override:
+    - bundle exec jekyll build
+deployment:
+  aws:
+    branch: master
+    commands:
+      - AWS_DEFAULT_REGION=eu-west-1 aws s3 sync --acl public-read --delete _site s3://blog.mir.dlang.io
