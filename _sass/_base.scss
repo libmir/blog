@@ -204,3 +204,43 @@ pre {
         }
     }
 }
+
+
+/**
+Labels
+*/
+
+.label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-primary {
+    background-color: #337ab7;
+}
+.post-label a:hover {
+    text-decoration: none;
+}
+
+.about-the-author {
+
+	img {
+		max-width: 100px;
+		float: left;
+		margin-right: 20px;
+
+		// rounded
+    	-webkit-border-radius: 50%;
+    	-moz-border-radius: 50%;
+    	border-radius: 50%;
+	}
+
+}

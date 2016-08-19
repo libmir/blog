@@ -1,15 +1,50 @@
 ---
 layout: default
 ---
+<!-- Look the author details up from the site config. -->
+{% assign author = site.data.authors[page.author] %}
+
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
+    <p class="post-meta">
+		<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>
+		{% if page.author %}
+			• <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+				by <a href="{{ author.web }}" target="_blank">{{ author.name }}</a>
+			</span>
+		{% endif %}
+		•
+		{% include post_categories.html %}
+	</p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
   </div>
+
+{% if page.author %}
+	<div class="about-the-author">
+
+	{% if author.avatar %}
+		<a href="{{ author.web }}" target="_blank">
+		<img
+		{% if author.avatar contains 'http' %}
+		  src="{{ author.avatar }}"
+		{% else %}
+		  src="{{ site.url }}/images/{{ author.avatar }}"
+		{% endif %}
+		alt="{{ author.name }} bio photo"></a>
+	{% endif %}
+
+	<a href="{{ author.web }}" target="_blank">
+		<h3 class="author-name">{{ author.name }}</h3>
+	</a/
+	{% if author.bio %}
+		<p class="author-bio">{{ author.bio }}</p>
+	{% endif %}
+	</div>
+{% endif %}
 
 </article>
