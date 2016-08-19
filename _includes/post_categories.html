@@ -1,0 +1,18 @@
+{% capture category %}{% if post %}{{ post.categories | category_links | size }}{% else %}{{ page.categories | category_links | size }}{% endif %}{% endcapture %}
+{% if category %}
+
+{% if post %}
+{% assign cats = post.categories %}
+{% else %}
+{% assign cats = page.categories %}
+{% endif %}
+
+<span class="post-label">
+    <!--<i class="fa fa-tag"></i>-->
+	{% for cat in cats %}
+	<a href="{{ cat | prepend: "/" | prepend: site.category_dir | prepend: "/" | prepend: site.baseurl }}">
+		<span class="label label-primary">{{cat}}</span> {% endfor %}
+	</a>
+</span>
+
+{% endif %}
