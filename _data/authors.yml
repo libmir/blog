@@ -2,5 +2,6 @@ wilzbach:
     name: Sebastian Wilzbach
     github: https://github.com/wilzbach
     web: https://seb.wilzba.ch
-    bio: GSoC student for the D Language Foundation and mir project.
+    bio: Sebastian is a GSoC student for the D Language Foundation and Mir project.
+         He is the author of <code>mir.random</code> and regular contributor to Mir.
     avatar: http://files.wilzbach.me/imgs/i.jpg
