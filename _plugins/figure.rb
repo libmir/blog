@@ -28,7 +28,7 @@ module Jekyll
         unless @caption.nil?
           figure_caption = @caption.gsub!(/\A"|"\Z/, '')
           figure_caption = converter.convert(figure_caption).gsub(/<\/?p[^>]*>/, '').chomp
-          figure_caption = figure_caption.gsub(/\\\(([^\\]*)\\\)/, "{% latex %}\\1{% endlatex %}")
+          figure_caption = figure_caption.gsub(/\\\((.*?)\\\)/, "{% latex %}\\1{% endlatex %}")
           figure_caption = Liquid::Template.parse(figure_caption).render(context)
           figure_caption = "  <figcaption>#{figure_caption}</figcaption>\n"
         end
