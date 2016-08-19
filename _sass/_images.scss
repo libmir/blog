@@ -1,0 +1,25 @@
+
+.halfsize {
+	max-width: ($content-width / 2) - 40;
+	text-align: center;
+	margin: 0 auto;
+	display: inline-block;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+	@include media-query($content-width - 40) {
+		display: block;
+		padding: 15px;
+    }
+}
+
+.halfheight {
+	img {
+		max-height: 500px;
+		max-width: 100%;
+		margin: 0 auto;
+	}
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
