@@ -19,3 +19,5 @@ katex:
 
 # jekyll doesn't like bundler
 exclude: ["vendor"]
+
+category_dir: categories
