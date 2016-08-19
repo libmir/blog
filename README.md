@@ -12,7 +12,7 @@ bundle exec jekyll serve
 To compile:
 
 ```
-bundle exec jekyll serve
+bundle exec jekyll build
 ```
 
 Latex
@@ -64,7 +64,16 @@ Plugins
 - allows server-side rendering of LaTeX formulas (-> extremely fast)
 - KaTeX files in `js` and `css` should be updated from time to time (it's still under heavy development)
 
+### [jekyll-figure](https://github.com/paulrobertlloyd/jekyll-figure)
+
+- `{% figure %}`
 
 ### Other
 
 - needs rouge `>= 1.11.0` for the [D lexer](https://github.com/jneen/rouge/pull/435)
+
+
+How to add figures
+------------------
+
+- generate `.svg`s (e.g. `inkscape --export-plain-svg=expo.svg expo.pdf`)
