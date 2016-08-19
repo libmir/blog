@@ -38,7 +38,9 @@ module Jekyll
 
             def import_js(path)
                 katexsrc = open(path).read
-                @katex = ExecJS.compile(katexsrc)
+                if not defined? @@katex
+                  @@katex = ExecJS.compile(katexsrc)
+                end
             end
 
             def katexify_inline(content)
@@ -56,7 +58,7 @@ module Jekyll
             end
 
             def eqn_to_html(string)
-                return @katex.call("katex.renderToString", string)
+                return @@katex.call("katex.renderToString", string)
             end
         end
     end
