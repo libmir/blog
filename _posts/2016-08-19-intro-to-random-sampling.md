@@ -40,13 +40,13 @@ of a random distribution:
 To sample a variable distributed according to the exponential distribution,
 a point $y$ on the CDF graph can be sampled and then using the *inverse*
 function its matching value $x$ can be obtained, e.g. if $0.4$ is sampled (first brown
-line) the inverse yields $-log(1 - 0.4) = 0.51$, for $0.6$
+line) the inverse yields $f^{-1}(0.4) = -log(1 - 0.4) = 0.51$, for $0.6$
 (yellow) it is $0.91$ and for $0.9$ (last brown line) it is $2.30$,
 respectively.
 
 Hence, given $F^{-1}$,
 values from the density can be sampled by using the given uniform random
-generator (of the interval $[0, 1]$ ).
+generator of the interval $[0, 1]$.
 For example, for the sampling procedure for the exponential distribution is:
 
 ```d
@@ -104,7 +104,7 @@ $f(x)$ is needed. In other words $ \forall x \in [l, r]: f(x) < h(x)$,
 where $l$ and $r$ are the left and right boundaries of an interval. The
 hat function (green in Figure 2) is the boundary function for our target density
 sampling. In this simple example the hat function is
-the green horizontal line $x = 1$.
+the green, horizontal line $x = 1$.
 
 {% figure caption: "Rejection sampling of \\(sin(x)\\) (blue). Hat function \\((x = 1)\\) is drawn
 in green, whereas the squeeze function \\(1 - |1 - 2x / \pi | \\) is drawn
@@ -113,14 +113,14 @@ rejected. The area of the distribution density is colored in grey." | class: "ha
 ![Image](/images/figures/random/rejection_sampling.svg)
 {% endfigure %}
 
-It is important to see that for every point $x$ it needs to be evaluated whether it’s
+It is important to see that for every point $x$, it needs to be evaluated whether $x$ is
 within the density area $f(x)$. As $h(x)$ is by definition always larger
 than $f(x)$ the formula $y * h(x) \leq f(x)$ can be used to
 programmatically check whether a generated point is within the target
 density as it covers the entire density of $f(x)$ (as
 $f(x) \in [0, 1]\  \forall x \in [\ell, r],\  y \in [0, 1]$)
 
-A simplified example of the basic rejection method can be seen here:
+Thus the basic rejection method is:
 
 ```d
 import std.random : rndGen, uniform;
@@ -202,7 +202,7 @@ Squeeze functions
 -----------------
 
 Calculating the probability density function is often expensive, thus
-defining a lower bound that can evaluated much faster yields a
+defining a lower bound that can be evaluated much faster yields a
 performance boost. This lower bound is called $s(x)$ which is majorized
 by $f(x)$, i.e. $s(x) \leq f(x) \forall x \in [l, r]$. For example, the
 squeeze function in is $1 - |1 - 2x / \pi |$. If $x$ is below the
@@ -260,7 +260,7 @@ squeeze parts:
 ![Image](/images/figures/random/dist_density_at_boundaries_b_0_hs.svg)
 {% endfigure %}
 
-The idea of composing distributions will be illustrated as follows. The
+A simple example of composing distributions is illustrated below. The
 density function is composed out of an exponential distribution (left)
 and a uniform distribution (right) and features a gap in the middle.
 
@@ -300,7 +300,7 @@ sample!T(gen, samplers, probs);
 ```
 
 The result of our basic composition with different target probabilities
-for the samples can be seen in . The (Tin)flex algorithm will
+for the samples can be seen in the diagrams below. The Tinflex algorithm will
 automatically generate intervals with hat and squeeze function for the
 desired distribution that are connected with such a composition sampler.
 
@@ -324,9 +324,10 @@ Where to go from here
 ---------------------
 
 All example snippets are available [online][samplers] and can be run directly
-with `dub` - the D package manager. In the next post the Tinflex algorithm, which
+with `dub` - the D package manager. In the [next post][tinflex-post]
+the Tinflex algorithm will be explained, The Tinflex algorithm
 automatically splits a differentiable random density function in intervals and
-constructs hat and squeeze function for each interval, will be explained.
+constructs hat and squeeze function for each interval.
 
 [mir]: https://github.com/libmir/mir
 [samplers]: https://github.com/wilzbach/flex-paper/tree/master/samplers)
