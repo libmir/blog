@@ -233,17 +233,22 @@ Labels
 .about-the-author {
 
     border-top: 1px solid $grey-color-light;
-	padding-top: 20px;
+    padding-top: 20px;
 
-	img {
-		max-width: 100px;
-		float: left;
-		margin-right: 20px;
+    img {
+        max-width: 100px;
+        float: left;
+        margin-right: 20px;
 
-		// rounded
-    	-webkit-border-radius: 50%;
-    	-moz-border-radius: 50%;
-    	border-radius: 50%;
-	}
+        // rounded
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+
+        @include media-query($on-laptop) {
+            max-width: 70px;
+            margin-bottom: 10px;
+        }
+    }
 
 }
