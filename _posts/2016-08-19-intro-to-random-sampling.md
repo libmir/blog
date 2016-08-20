@@ -326,7 +326,7 @@ Where to go from here
 All example snippets are available [online][samplers] and can be run directly
 with `dub` - the D package manager. In the [next post][tinflex-post]
 the Tinflex algorithm will be explained, The Tinflex algorithm
-automatically splits a differentiable random density function in intervals and
+automatically splits a differentiable random density function into intervals and
 constructs hat and squeeze function for each interval.
 
 [mir]: https://github.com/libmir/mir
