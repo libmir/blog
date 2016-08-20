@@ -7,6 +7,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://blog.mir.dlang.io" # the base hostname & protocol for your site
 twitter_username: libmir
 github_username:  libmir
+github_repo: libmir/blog
 
 # Build settings
 markdown: kramdown

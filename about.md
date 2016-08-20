@@ -4,4 +4,8 @@ title: About
 permalink: /about/
 ---
 
-to be filled.
+This is the Blog of the Mir project.
+You can browse its [sources](https://github.com/libmir/blog) on Github.
+
+Don't hesitate to [ping us](https://github.com/libmir/blog/issues)
+if you have a good idea for an article.
