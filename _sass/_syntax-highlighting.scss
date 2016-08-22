@@ -1,8 +1,13 @@
 /**
  * Syntax highlighting styles
  */
-.highlight {
+
+// by default use a white background
+.language-d .highlight {
     background: #333;
+}
+
+.highlight {
     @extend %vertical-rhythm;
 
 	.c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */

@@ -299,6 +299,10 @@ samplers[1] = (ref typeof (gen) gen) {
 sample!T(gen, samplers, probs);
 ```
 
+Drawing a value from a discrete distribution can be done in $\mathcal{O}(1)$
+with the [`mir.random.discrete`][mir-discrete] package, which implements
+the [Alias method][vose-91].
+
 The result of our basic composition with different target probabilities
 for the samples can be seen in the diagrams below. The Tinflex algorithm will
 automatically generate intervals with hat and squeeze function for the
@@ -320,6 +324,8 @@ desired distribution that are connected with such a composition sampler.
 ![](/images/figures/random/composed_dist_30_70_cum.svg)
 {% endfigure %}
 
+[mir-discrete]: http://docs.mir.dlang.io/latest/mir_random_discrete.html
+
 Where to go from here
 ---------------------
 
@@ -329,6 +335,17 @@ the Tinflex algorithm will be explained, The Tinflex algorithm
 automatically splits a differentiable random density function into intervals and
 constructs hat and squeeze function for each interval.
 
-[mir]: https://github.com/libmir/mir
+Literature references
+---------------------
+
+- Devroye, Luc. ["Sample-based non-uniform random variate generation."][devroye-86] _Proceedings of the 18th conference on Winter simulation_. ACM, 1986.
+- Vose, Michael D. ["A linear algorithm for generating random numbers with a given distribution."][vose-91] _IEEE Transactions on software engineering_ 17.9 (1991): 972-975.
+- Hörmann, Wolfgang, Josef Leydold, and Gerhard Derflinger. [Automatic nonuniform random variate generation][hoermann-13]. _Springer Science & Business Media_, 2013.
+
+[mir]: http://mir.dlang.io
 [samplers]: https://github.com/wilzbach/flex-paper/tree/master/samplers)
-[tinflex-post]: #
+[tinflex-post]: {{ site.baseurl }}/random/2016/08/22/transformed-density-rejection-sampling.html
+
+[devroye-86]: http://www.eirene.de/Devroye.pdf
+[vose-91]: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.398.3339&rep=rep1&type=pdf
+[hoermann-13]: http://www.springer.com/us/book/9783540406525

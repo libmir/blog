@@ -10,7 +10,7 @@ module Jekyll
                 @tokens = tokens
                 @markup = markup
 
-                @centred = markup.include? 'centred'
+                @centred = markup.include? 'centered'
             end
 
             # Config defaults
