@@ -107,8 +107,7 @@ sampling. In this simple example the hat function is
 the green, horizontal line $x = 1$.
 
 {% figure caption: "Rejection sampling of \\(sin(x)\\) (blue). Hat function \\((x = 1)\\) is drawn
-in green, whereas the squeeze function \\(1 - |1 - 2x / \pi | \\) is drawn
-in red. Points are marked black when accepted, and brown for
+in green. Points are marked black when accepted, and brown when
 rejected. The area of the distribution density is colored in grey." | class: "halfheight" %}
 ![Image](/images/figures/random/rejection_sampling.svg)
 {% endfigure %}
@@ -204,11 +203,20 @@ Squeeze functions
 Calculating the probability density function is often expensive, thus
 defining a lower bound that can be evaluated much faster yields a
 performance boost. This lower bound is called $s(x)$ which is majorized
-by $f(x)$, i.e. $s(x) \leq f(x) \forall x \in [l, r]$. For example, the
-squeeze function in is $1 - |1 - 2x / \pi |$. If $x$ is below the
+by $f(x)$, i.e. $s(x) \leq f(x) \ \forall x \in [l, r]$. For the previous example the
+squeeze function is $1 - |1 - 2x / \pi |$. If $x$ is below the
 squeeze function, it can be accepted *without* the need to calculate the
 density function as by definition every point in the squeeze function
-$s(x)$ is also below $f(x)$. Hence the *sample* routine can be adapted:
+$s(x)$ is also below $f(x)$.
+
+{% figure caption: "Rejection sampling of \\(sin(x)\\) (blue). Hat function \\((x = 1)\\) is drawn
+in green, whereas the squeeze function \\(1 - |1 - 2x / \pi | \\) is drawn
+in red. Points are marked black when accepted, green when accepted directly with the squeeze function,
+and brown if rejected. The area of the distribution density is colored in grey." | class: "halfheight" %}
+![Image](/images/figures/random/rejection_sampling_squeeze.svg)
+{% endfigure %}
+
+Furthermore, the *sample* routine can be adapted:
 
 ```d
 import std.math : abs, PI, sin;

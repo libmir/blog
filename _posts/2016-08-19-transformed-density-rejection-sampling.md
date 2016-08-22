@@ -130,7 +130,7 @@ the exponential function can be used:
 	T_c(x) = log(x) \quad T_c^{-1}(x) = exp(x)
 {% endlatex %}
 
-{% figure caption: "Exponential function (green) and it’s inverse the natural log (blue)" | class: "halfheight" %}
+{% figure caption: "Exponential function (green) and it’s inverse the natural log (blue)" | class: "halfheight halfheight-md" %}
 ![](/images/figures/random/log_exp.svg)
 {% endfigure %}
 
