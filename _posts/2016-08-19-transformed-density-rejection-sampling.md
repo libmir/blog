@@ -441,7 +441,7 @@ different efficiencies $\rho$ ($1.3, 1.1, 1.001$) were constructed. The last met
 is based on the WIP implementation of the [Ziggurat algorithm](https://github.com/libmir/mir/pull/261),
 which is a specialized algorithm for monotone decreasing distributions.
 
-Method			   | $\mu$ time| $\sigma^2$ time
+Method			   | Avg. time| Std.dev. time
 -------------------|----------|------
 boxMuller.naive    |   850 ms | 82 ms
 boxMuller.dstats   |   801 ms |  2 ms
