@@ -69,31 +69,31 @@ function is only defined in $\mathbb{C}$, its needs to be restricted to
 positive numbers only:
 
 {% latex centered %}
-	T_c(x) = sgn(c) \, x^c
+    T_c(x) = sgn(c) \, x^c
 {% endlatex %}
 
 With the usual inversion rules and if $c > 0$ we get:
 
 {% latex centered %}
-	\begin{aligned}
-		y &= x^c \\
-		log(y) &= log(x^c) \\
-		log(y) &= c \, log(x) \\
-		\frac{log(y)}{c} &= log(x) \\
-		exp\left(\frac{log(y)}{c}\right) &= x
-	\end{aligned}
+    \begin{aligned}
+        y &= x^c \\
+        log(y) &= log(x^c) \\
+        log(y) &= c \, log(x) \\
+        \frac{log(y)}{c} &= log(x) \\
+        exp\left(\frac{log(y)}{c}\right) &= x
+    \end{aligned}
 {% endlatex %}
 
 which is $y^{1 / c}$ and if $c < 0$ we obtain:
 
 {% latex centered %}
-	\begin{aligned}
-		y &= -x^c \\
-		log(y) &= log(-x^c) \\
-		log(y) &= -c \, log(x) \\
-		\frac{log(y)}{c} &= -log(x) \\
-		exp\left(\frac{log(y)}{c}\right) &= -x
-	\end{aligned}
+    \begin{aligned}
+        y &= -x^c \\
+        log(y) &= log(-x^c) \\
+        log(y) &= -c \, log(x) \\
+        \frac{log(y)}{c} &= -log(x) \\
+        exp\left(\frac{log(y)}{c}\right) &= -x
+    \end{aligned}
 {% endlatex %}
 
 which is $(-y)^{1 / c}$.
@@ -101,7 +101,7 @@ which is $(-y)^{1 / c}$.
 Thus in general the inverse function is defined as:
 
 {% latex centered %}
-	T_c^{-1}(x) = (sgn(c) \, x)^{\frac{1}{c}}
+    T_c^{-1}(x) = (sgn(c) \, x)^{\frac{1}{c}}
 {% endlatex %}
 
 Two examples of $T_c$ transformations can be seen below:
@@ -127,7 +127,7 @@ defined, however for this case the natural logarithm and it's inverse
 the exponential function can be used:
 
 {% latex centered %}
-	T_c(x) = log(x) \quad T_c^{-1}(x) = exp(x)
+    T_c(x) = log(x) \quad T_c^{-1}(x) = exp(x)
 {% endlatex %}
 
 {% figure caption: "Exponential function (green) and it’s inverse the natural log (blue)" | class: "halfheight halfheight-md" %}
@@ -139,7 +139,7 @@ the exponential function can be used:
 Remember that $f(x)$ is the pdf, and is its transformation $\tilde{f}(x)$ is:
 
 {% latex centered %}
-	\tilde{f}(x) = T_c(f(x))
+    \tilde{f}(x) = T_c(f(x))
 {% endlatex %}
 
 The Tinflex algorithm expects the **log**-density, which means that for $c = 0$, no
@@ -148,12 +148,12 @@ is needed. This mean we first need to apply the *inverse* $T_c^{-1}(x) = exp(x)$
 and then apply the other $T_c$ transformation:
 
 {% latex centered %}
-	\begin{aligned}
-		\tilde{f}(x) &= T_{c \neq 0}(T_0^{-1}(x))) \\
-		&= T_{c \neq 0}(exp(x))) \\
-		&= sgn(c) \, exp(x)^c \\
-		&= sgn(c) \, exp(x \, c)
-	\end{aligned}
+    \begin{aligned}
+        \tilde{f}(x) &= T_{c \neq 0}(T_0^{-1}(x))) \\
+        &= T_{c \neq 0}(exp(x))) \\
+        &= sgn(c) \, exp(x)^c \\
+        &= sgn(c) \, exp(x \, c)
+    \end{aligned}
 {% endlatex %}
 
 Linear functions
@@ -185,7 +185,7 @@ as long as there is at most one inflection point in the interval.
 The following definition for linear functions is used:
 
 {% latex centered %}
-	\tilde{f}(x) = \alpha + \beta \, (x - x_0)
+    \tilde{f}(x) = \alpha + \beta \, (x - x_0)
 {% endlatex %}
 
 Remember that the transformation is applied with $T_c(x)$ and that the hat
@@ -196,14 +196,14 @@ Both the left and right tangent can be defined as follows, where $x_0$ is either
 $l$ or $r$:
 
 {% latex centered %}
-	tan_{x_0}(x) = \tilde{f}(x_0) + \tilde{f}'(x_0) \, (x - x_0)
+    tan_{x_0}(x) = \tilde{f}(x_0) + \tilde{f}'(x_0) \, (x - x_0)
 {% endlatex %}
 
 Moreover for the secant we can pick either $\ell$ or $r$ as root point, and thus
 only the definition of the slope $\beta$ is different:
 
 {% latex centered %}
-	sec(x) = \tilde{f}(\ell) + \frac{\tilde{f}(r) - \tilde{f}(\ell)}{r - \ell} \, (x - \ell)
+    sec(x) = \tilde{f}(\ell) + \frac{\tilde{f}(r) - \tilde{f}(\ell)}{r - \ell} \, (x - \ell)
 {% endlatex %}
 
 With these definition we can integrate the linear function to calculate the area
@@ -225,26 +225,26 @@ like e.g. the [Dagum distribution](https://en.wikipedia.org/wiki/Dagum_distribut
 which has the following probability density function:
 
 {% latex centered %}
-	f(x) = \frac{ap}{x} \left( \frac{ (\frac{x}{b})^{ap}}{\left((\frac{x}{a})^a + 1\right)^{p+1}} \right)
+    f(x) = \frac{ap}{x} \left( \frac{ (\frac{x}{b})^{ap}}{\left((\frac{x}{a})^a + 1\right)^{p+1}} \right)
 {% endlatex %}
 
 For simplicity of this example we fix $a$, $b$ and $p$ to $1$ and thus obtain:
 
 {% latex centered %}
-	f(x) = \frac{1}{(x + 1)^2}
+    f(x) = \frac{1}{(x + 1)^2}
 {% endlatex %}
 
 For the Tinflex algorithm the pdf function and its first and second derivative
 need to be given in [log-space](#tinflex-transformations):
 
 {% latex centered %}
-	\tilde{f}(x) = log \left( \frac{1}{(x + 1)^2} \right)
+    \tilde{f}(x) = log \left( \frac{1}{(x + 1)^2} \right)
 {% endlatex %}
 
 Its first and second derivative after $x$ are:
 
 {% latex centered %}
-	\tilde{f}'(x) = - \frac{2}{x + 1}  \quad \tilde{f}''(x) = \frac{2}{(x + 1)^2}
+    \tilde{f}'(x) = - \frac{2}{x + 1}  \quad \tilde{f}''(x) = \frac{2}{(x + 1)^2}
 {% endlatex %}
 
 In case you haven't used the [differentiation][wolfram-diff]
@@ -320,25 +320,25 @@ Assume you would want to sample from the [Gompertz distribution](https://en.wiki
 which has the following probability density function:
 
 {% latex centered %}
-	f(x) = b \eta e^{bx} \ e^{\eta} \ exp(-\eta e^{bx})
+    f(x) = b \eta e^{bx} \ e^{\eta} \ exp(-\eta e^{bx})
 {% endlatex %}
 
 For simplicity, we set $\eta = 0.005$ and $b = 1.5$ and thus get
 
 {% latex centered %}
-	f(x) = 0.00753759 e^{-0.005 e^{1.5 x} + 1.5 x}
+    f(x) = 0.00753759 e^{-0.005 e^{1.5 x} + 1.5 x}
 {% endlatex %}
 
 And consequently in log-space:
 
 {% latex centered %}
-	\tilde{f}(x) = log \left( 0.00753759 e^{-0.005 e^{1.5 x} + 1.5 x} \right)
+    \tilde{f}(x) = log \left( 0.00753759 e^{-0.005 e^{1.5 x} + 1.5 x} \right)
 {% endlatex %}
 
 Its first and second derivative after $x$ are:
 
 {% latex centered %}
-	\tilde{f}'(x) = 1.5-0.0075 e^{1.5 x}  \quad \tilde{f}''(x) = -0.01125 e^{1.5 x}
+    \tilde{f}'(x) = 1.5-0.0075 e^{1.5 x}  \quad \tilde{f}''(x) = -0.01125 e^{1.5 x}
 {% endlatex %}
 
 Note that for [log-density][gompertz-plot] also no [inflection point][gompertz-inflection-point]
@@ -442,7 +442,7 @@ different efficiencies $\rho$ ($1.3, 1.1, 1.001$) were constructed. The last met
 is based on the WIP implementation of the [Ziggurat algorithm](https://github.com/libmir/mir/pull/261),
 which is a specialized algorithm for monotone decreasing distributions.
 
-Method			   | Avg. time| Std.dev. time
+Method             | Avg. time| Std.dev. time
 -------------------|----------|------
 boxMuller.naive    |   850 ms | 82 ms
 boxMuller.dstats   |   801 ms |  2 ms
