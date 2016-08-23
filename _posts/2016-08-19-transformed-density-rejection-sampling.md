@@ -409,7 +409,7 @@ $\rho$ | n   | Flex   | Tinflex
 
 Due to the enormous time consumption of the R implementation, the number of iterations
 has been reduced from 10K to 1K for higher $\rho$.
-With the Mir Flex implementation a performance boost performance boost for the construction phase
+With the Mir Flex implementation a performance boost for the construction phase
 of the factor 500-600 in comparison to the R Tinflex implementation can be observed.
 
 Not only has the D implementation been engineered very carefully with performance in mind,
