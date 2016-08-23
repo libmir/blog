@@ -114,7 +114,7 @@ rejected. The area of the distribution density is colored in grey." | class: "ha
 
 It is important to see that for every point $x$, it needs to be evaluated whether $x$ is
 within the density area $f(x)$. As $h(x)$ is by definition always larger
-than $f(x)$ the formula $y * h(x) \leq f(x)$ can be used to
+than $f(x)$ the formula $y \, h(x) \leq f(x)$ can be used to
 programmatically check whether a generated point is within the target
 density as it covers the entire density of $f(x)$ (as
 $f(x) \in [0, 1]\  \forall x \in [\ell, r],\  y \in [0, 1]$)
