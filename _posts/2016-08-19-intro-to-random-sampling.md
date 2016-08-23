@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "An introduction to non-uniform random sampling"
+title:  "An introduction to sampling from non-uniform random distributions"
 date:   2016-08-19 03:29:44 +0200
 author: wilzbach
 categories: random
