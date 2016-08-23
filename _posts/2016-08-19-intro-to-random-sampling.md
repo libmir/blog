@@ -224,7 +224,7 @@ import std.random : rndGen, uniform;
 alias T = double;
 
 S sample(S, RNG, Pdf, Hat, HatInv, Squeeze)(ref RNG gen, Pdf pdf, Hat hat,
-											HatInv hatInvCDF, Squeeze sq)
+                                            HatInv hatInvCDF, Squeeze sq)
 {
     import std.random : uniform;
     for (;;)
