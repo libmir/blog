@@ -431,7 +431,8 @@ The source of this benchmark is available [online][flex-tinflex-benchmark].
 
 ### Sampling
 
-A benchmark between multiple existing normal distributions samplers has been made.
+A benchmark between multiple existing normal distribution samplers of sampling
+10M random values has been made.
 All existing libraries ([dstats](https://github.com/DlangScience/dstats/blob/master/source/dstats/distrib.d),
 [hap](https://github.com/WebDrake/hap/blob/master/source/hap/random/distribution.d),
 [atmosphere](https://github.com/9il/atmosphere/blob/master/source/atmosphere/random.d))
