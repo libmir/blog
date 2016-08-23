@@ -69,7 +69,7 @@ function is only defined in $\mathbb{C}$, its needs to be restricted to
 positive numbers only:
 
 {% latex centered %}
-	T_c(x) = sgn(c) * x^c
+	T_c(x) = sgn(c) \, x^c
 {% endlatex %}
 
 With the usual inversion rules and if $c > 0$ we get:
@@ -78,7 +78,7 @@ With the usual inversion rules and if $c > 0$ we get:
 	\begin{aligned}
 		y &= x^c \\
 		log(y) &= log(x^c) \\
-		log(y) &= c * log(x) \\
+		log(y) &= c \, log(x) \\
 		\frac{log(y)}{c} &= log(x) \\
 		exp\left(\frac{log(y)}{c}\right) &= x
 	\end{aligned}
@@ -90,7 +90,7 @@ which is $y^{1 / c}$ and if $c < 0$ we obtain:
 	\begin{aligned}
 		y &= -x^c \\
 		log(y) &= log(-x^c) \\
-		log(y) &= -c * log(x) \\
+		log(y) &= -c \, log(x) \\
 		\frac{log(y)}{c} &= -log(x) \\
 		exp\left(\frac{log(y)}{c}\right) &= -x
 	\end{aligned}
@@ -101,7 +101,7 @@ which is $(-y)^{1 / c}$.
 Thus in general the inverse function is defined as:
 
 {% latex centered %}
-	T_c^{-1}(x) = (sgn(c) * x)^{\frac{1}{c}}
+	T_c^{-1}(x) = (sgn(c) \, x)^{\frac{1}{c}}
 {% endlatex %}
 
 Two examples of $T_c$ transformations can be seen below:
@@ -151,8 +151,8 @@ and then apply the other $T_c$ transformation:
 	\begin{aligned}
 		\tilde{f}(x) &= T_{c \neq 0}(T_0^{-1}(x))) \\
 		&= T_{c \neq 0}(exp(x))) \\
-		&= sgn(c) * exp(x)^c \\
-		&= sgn(c) * exp(x * c)
+		&= sgn(c) \, exp(x)^c \\
+		&= sgn(c) \, exp(x \, c)
 	\end{aligned}
 {% endlatex %}
 
@@ -185,7 +185,7 @@ as long as there is at most one inflection point in the interval.
 The following definition for linear functions is used:
 
 {% latex centered %}
-	\tilde{f}(x) = \alpha + \beta * (x - x_0)
+	\tilde{f}(x) = \alpha + \beta \, (x - x_0)
 {% endlatex %}
 
 Remember that the transformation is applied with $T_c(x)$ and that the hat
@@ -196,14 +196,14 @@ Both the left and right tangent can be defined as follows, where $x_0$ is either
 $l$ or $r$:
 
 {% latex centered %}
-	tan_{x_0}(x) = \tilde{f}(x_0) + \tilde{f}'(x_0) * (x - x_0)
+	tan_{x_0}(x) = \tilde{f}(x_0) + \tilde{f}'(x_0) \, (x - x_0)
 {% endlatex %}
 
 Moreover for the secant we can pick either $\ell$ or $r$ as root point, and thus
 only the definition of the slope $\beta$ is different:
 
 {% latex centered %}
-	sec(x) = \tilde{f}(\ell) + \frac{\tilde{f}(r) - \tilde{f}(\ell)}{r - \ell} * (x - \ell)
+	sec(x) = \tilde{f}(\ell) + \frac{\tilde{f}(r) - \tilde{f}(\ell)}{r - \ell} \, (x - \ell)
 {% endlatex %}
 
 With these definition we can integrate the linear function to calculate the area
