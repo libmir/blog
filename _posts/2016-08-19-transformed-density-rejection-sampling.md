@@ -452,6 +452,8 @@ flexNormal.slow    |  1406 ms |  4 ms
 flexNormal.medium  |  1206 ms |  1 ms
 flexNormal.fast    |  1124 ms |  0 ms
 ziggurat           |   357 ms |  5 ms
+clang++ -O3        |  2216 ms |  6 ms
+g++ -O3            |   941 ms |  11 ms
 
 While one should look with care at performance benchmarks as statistical quality
 is usually a higher goal than speed, it still can be seen that (1) investing more
