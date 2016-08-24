@@ -1,5 +1,7 @@
 require 'execjs'
 
+$cache = Hash.new(0)
+
 module Jekyll
     module Tags
         class KatexBlock < Liquid::Block
@@ -58,7 +60,10 @@ module Jekyll
             end
 
             def eqn_to_html(string)
-                return @@katex.call("katex.renderToString", string)
+                unless $cache.key?(string)
+                  $cache[string] = @@katex.call("katex.renderToString", string)
+                end
+                return $cache[string]
             end
         end
     end
