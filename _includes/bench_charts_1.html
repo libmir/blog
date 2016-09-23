@@ -1,0 +1,389 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+</script>
+<script src="http://code.highcharts.com/highcharts.js">
+</script>
+<script src="http://code.highcharts.com/modules/exporting.js">
+</script>
+
+
+<div id="chart_single" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="chart_double" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="chart_complex_single" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="chart_complex_double" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+<script type="text/javascript">
+
+$('#chart_single').highcharts({
+    title: {
+        text: 'Single precision',
+        x: -20 //center
+    },
+    subtitle: {
+        text: 'General Matrix-matrix Multiplication',
+        x: -20
+    },
+    xAxis: {
+        title: {
+            text: 'Matrix Size (m = n = k)'
+        },
+        categories: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 300, 500, 600, 700, 800, 900, 1000,
+    1200, 1400, 1600, 1800, 2000]
+    },
+    yAxis: {
+        title: {
+            text: 'GFLOPS'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '°C'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'Mir GLAS',
+        data: [
+            10,
+            26.6667,
+            31.7647,
+            49.2308,
+            45.4545,
+            53.3333,
+            49,
+            63.2099,
+            56.0769,
+            65.1466,
+            75.4361,
+            77.5416,
+            79.7321,
+            84.3569,
+            83.5984,
+            83.667,
+            85.0255,
+            83.7517,
+            84.9272,
+            85.3299,
+            85.8983,
+            85.1685,
+            85.9424,
+            ]
+    }, {
+        name: 'OpenBLAS',
+        data: [
+            6.66667,
+            17.7778,
+            20,
+            31.2195,
+            32.8947,
+            37.8947,
+            36.1053,
+            46.1261,
+            42.5073,
+            50.1253,
+            63.4921,
+            68.5366,
+            75.6018,
+            77.5709,
+            75.5998,
+            72.8841,
+            73.8022,
+            74.7842,
+            74.4675,
+            75.5042,
+            74.456,
+            75.752,
+            75.7596,
+            ]
+    }]
+});
+
+$('#chart_double').highcharts({
+    title: {
+        text: 'Double precision',
+        x: -20 //center
+    },
+    subtitle: {
+        text: 'General Matrix-matrix Multiplication',
+        x: -20
+    },
+    xAxis: {
+        title: {
+            text: 'Matrix Size (m = n = k)'
+        },
+        categories: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 300, 500, 600, 700, 800, 900, 1000,
+    1200, 1400, 1600, 1800, 2000]
+    },
+    yAxis: {
+        title: {
+            text: 'GFLOPS'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '°C'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'Mir GLAS',
+        data: [
+            10,
+            20,
+            25.7143,
+            29.0909,
+            28.0899,
+            31.7647,
+            31.7593,
+            33.1392,
+            34.5498,
+            35.3357,
+            39.0054,
+            41.049,
+            40.8197,
+            41.1915,
+            40.6497,
+            39.8137,
+            40.3826,
+            41.292,
+            39.9376,
+            41.0561,
+            39.3492,
+            40.0552,
+            41.9794,
+            ]
+    }, {
+        name: 'OpenBLAS',
+        data: [
+            6.66667,
+            12.3077,
+            15,
+            17.2973,
+            20.3252,
+            22.8571,
+            22.6403,
+            25.8586,
+            26.3177,
+            28.5307,
+            34.5796,
+            35.9043,
+            38.133,
+            39.1053,
+            39.4325,
+            39.4231,
+            39.5458,
+            39.3619,
+            39.4518,
+            39.2612,
+            39.4028,
+            39.7043,
+            40.275,
+            ]
+    }]
+});
+
+$('#chart_complex_single').highcharts({
+    title: {
+        text: 'Complex single precision',
+        x: -20 //center
+    },
+    subtitle: {
+        text: 'General Matrix-matrix Multiplication',
+        x: -20
+    },
+    xAxis: {
+        title: {
+            text: 'Matrix Size (m = n = k)'
+        },
+        categories: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 300, 500, 600, 700, 800, 900, 1000,
+    1200, 1400, 1600, 1800, 2000]
+    },
+    yAxis: {
+        title: {
+            text: 'GFLOPS'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '°C'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'Mir GLAS',
+        data: [
+            5,
+            10,
+            11.0204,
+            15.0588,
+            13.8889,
+            16.4259,
+            15.4505,
+            17.9335,
+            17.2954,
+            18.4162,
+            19.1502,
+            21.2674,
+            21.5486,
+            21.8573,
+            21.8173,
+            21.7568,
+            21.963,
+            22.1453,
+            22.1617,
+            22.264,
+            22.1296,
+            22.084,
+            22.0212,
+            ]
+    }, {
+        name: 'OpenBLAS',
+        data: [
+            3.33333,
+            6.66667,
+            8.57143,
+            10.6667,
+            10.9649,
+            12.6686,
+            12.5182,
+            14.7338,
+            14.802,
+            15.4202,
+            18.269,
+            19.3126,
+            19.9578,
+            19.832,
+            20.0618,
+            19.708,
+            19.8929,
+            19.6968,
+            19.8697,
+            19.8517,
+            19.8832,
+            20.0947,
+            20.1026,
+            ]
+    }]
+});
+
+$('#chart_complex_double').highcharts({
+    title: {
+        text: 'Complex double precision',
+        x: -20 //center
+    },
+    subtitle: {
+        text: 'General Matrix-matrix Multiplication',
+        x: -20
+    },
+    xAxis: {
+        title: {
+            text: 'Matrix Size (m = n = k)'
+        },
+        categories: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100,
+    200, 300, 500, 600, 700, 800, 900, 1000,
+    1200, 1400, 1600, 1800, 2000]
+    },
+    yAxis: {
+        title: {
+            text: 'GFLOPS'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }]
+    },
+    tooltip: {
+        valueSuffix: '°C'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+    },
+    series: [{
+        name: 'Mir GLAS',
+        data: [
+            4,
+            5.92593,
+            6.83544,
+            8,
+            8.14332,
+            9.01879,
+            8.97906,
+            9.2922,
+            9.25127,
+            9.7561,
+            10.3252,
+            10.5628,
+            10.5572,
+            10.6548,
+            10.735,
+            10.4021,
+            10.7439,
+            10.8849,
+            10.5772,
+            10.8421,
+            10.814,
+            10.8683,
+            10.8934,
+            ]
+    }, {
+        name: 'OpenBLAS',
+        data: [
+            2.5,
+            4.84848,
+            5.5102,
+            6.36816,
+            7.18391,
+            8.16635,
+            8.00467,
+            8.56904,
+            8.61193,
+            8.56164,
+            9.72172,
+            9.26784,
+            9.87186,
+            9.80377,
+            9.79013,
+            9.7793,
+            9.77699,
+            9.83722,
+            9.83887,
+            9.80213,
+            9.9795,
+            9.91657,
+            9.86693,
+            ]
+    }]
+});
+</script>
