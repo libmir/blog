@@ -28,6 +28,8 @@ As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instr
 | Mir GLAS | v0.18.0, native target, single thread |
 | OpenBLAS | v0.2.18, native target, single thread |
 
+The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
+
 ### Results
 
 There are four charts:
