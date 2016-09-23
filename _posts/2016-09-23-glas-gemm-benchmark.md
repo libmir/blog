@@ -28,7 +28,25 @@ As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instr
 | Mir GLAS | v0.18.0, native target, single thread |
 | OpenBLAS | v0.2.18, native target, single thread |
 
+
+#### Source code
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
+
+Mir GLAS has native `mir.ndslice`, which is development version of 
+[std.experimental.ndslice](dlang.org/phobos/std_experimental_ndslice.html).
+
+
+```d
+// Performs: c := alpha a x b + beta c
+// glas is a pointer to a GlasContext
+glas.gemm(alpha, a, b, beta, c);
+```
+
+#### Environment variables to set single thread for cblas
+
+| openBLAS | OPENBLAS_NUM_THREADS=1 |
+| Accelerate (Apple) | VECLIB_MAXIMUM_THREADS=1 |
+| Intel MKL | MKL_NUM_THREADS=1 |
 
 ### Results
 
