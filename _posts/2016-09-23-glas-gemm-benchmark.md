@@ -32,7 +32,7 @@ As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instr
 #### Source code
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
 
-Mir GLAS has native `mir.ndslice`, which is development version of 
+Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is development version of 
 [std.experimental.ndslice](dlang.org/phobos/std_experimental_ndslice.html).
 
 
