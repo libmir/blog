@@ -55,11 +55,11 @@ OpenBLAS and Intel MKL have sequential configurations. Sequential configuration 
 
 ### Results
 
-There are four charts:
- - single precisions numbers
- - double precisions numbers
- - single precisions complex numbers
- - double precisions complex numbers
+There are eight charts:
+ - single precisions numbers x2
+ - double precisions numbers x2
+ - single precisions complex numbers x2
+ - double precisions complex numbers x2
 
 Higher is better.
 
