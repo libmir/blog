@@ -11,10 +11,10 @@ between [Mir.GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com
 and two closed source BLAS implementations from Intel and Apple.
 
 OpenBLAS is the default BLAS implementation for most of numerical and scientific projects, for example [Julia Programing Language](http://julialang.org/).
-OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) kernels were written in assembler.
+OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) computation kernels [were written in assembler](https://github.com/xianyi/OpenBLAS/blob/develop/kernel/x86_64/sgemm_kernel_16x4_haswell.S).
 
-Mir GLAS is Generic Linear Algebra Subroutines. It has single generic kernel for all targets, all floating point and complex types.
-It is written completely in D, without any assembler blocks.
+Mir GLAS is [LLVM](http://llvm.org)-accelerated Generic Linear Algebra Subroutines. It has single generic kernel for all targets, all floating point and complex types.
+It is written completely in D for [LDC](https://github.com/ldc-developers/ldc) (LLVM D Compiler), without any assembler blocks.
 In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code.
 
 Mir GLAS is truly generic comparing with C++ [Eigen](http://eigen.tuxfamily.org/).
