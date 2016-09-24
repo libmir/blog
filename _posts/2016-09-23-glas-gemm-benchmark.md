@@ -24,12 +24,13 @@ As of October 2016 configurations are available for the X87, SSE2, AVX, and AVX2
 ### Machine and software
 
 | CPU | 2.2 GHz Core i7 (I7-4770HQ) |
+| L3 Cache | 6 MB |
 | RAM | 16 GB of 1600 MHz DDR3L SDRAM |
 | Model Identifier | MacBookPro11,2 |
 | OS | OS X 10.11.6 |
 | Mir GLAS | v0.18.0, native target, single thread |
 | OpenBLAS | v0.2.18, native target, single thread |
-| Intel MKL | Recent, native target, single thread (sequential configurations) |
+| Intel MKL | 2016, native target, single thread (sequential configurations) |
 | Apple Accelerate | OS X 10.11.6, native target, single thread (sequential configurations) |
 
 #### Source code
