@@ -70,3 +70,6 @@ Higher is better.
 Mir GLAS is significantly faster then OpenBLAS and Apple Accelerate for virtually all benchmarks and parameters.
 Mir GLAS average performance equals to Intel MKL, which is the best for Intel CPUs.
 Due to its simple and generic architecture it can be easily configured for new targets.
+
+### Acknowledgements
+Andrei Alexandrescu.
