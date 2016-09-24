@@ -1,5 +1,5 @@
 ---
-title: "Mir.GLAS vs OpenBLAS vs Intel MKL vs Apple Accelerate: AVX2 GEMM"
+title: "Mir.GLAS vs Eigen vs OpenBLAS vs Intel MKL vs Apple Accelerate: AVX2 GEMM"
 layout: post
 date: 2016-09-23
 author: 9il
