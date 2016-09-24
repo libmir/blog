@@ -10,15 +10,15 @@ The post represents performance benchmark for general matrix-matrix multiplicati
 between [Mir.GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com/xianyi/OpenBLAS),
 and two closed source BLAS implementations from Intel and Apple.
 
-OpenBLAS is the default BLAS implementation for most numerical and scientific projects, for example [Julia Programing Language](http://julialang.org/).
-OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell) kernels was written in assembler.
+OpenBLAS is the default BLAS implementation for most of numerical and scientific projects, for example [Julia Programing Language](http://julialang.org/).
+OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell) kernels were written in assembler.
 
 Mir GLAS is Generic Linear Algebra Subroutines. It has single generic kernel for all targets, all floating point and complex types.
 It is written completely in D, without any assembler blocks.
 In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code.
 
 Mir GLAS is truly generic comparing with C++ [Eigen](http://eigen.tuxfamily.org/).
-To add new architecture or target an engineer just need to extend small GLAS configuration file.
+To add new architecture or target an engineer just needs to extend small GLAS configuration file.
 As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instruction sets.
 
 ### Machine and software
@@ -35,7 +35,7 @@ As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instr
 #### Source code
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
 
-Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is development version of 
+Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is a development version of 
 [std.experimental.ndslice](http://dlang.org/phobos/std_experimental_ndslice.html).
 
 
