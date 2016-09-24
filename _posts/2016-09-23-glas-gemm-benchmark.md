@@ -10,7 +10,7 @@ This post presents performance benchmarks for general matrix-matrix multiplicati
 between [Mir.GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com/xianyi/OpenBLAS),
 and two closed source BLAS implementations from Intel and Apple.
 
-OpenBLAS is the default BLAS implementation for most numerical and scientific projects, for example the [Julia Programing Language](http://julialang.org/).
+OpenBLAS is the default BLAS implementation for most numerical and scientific projects, for example the [Julia Programing Language](http://julialang.org/) and [NumPy](http://www.numpy.org/).
 OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) computation kernels [were written in assembler](https://github.com/xianyi/OpenBLAS/blob/develop/kernel/x86_64/sgemm_kernel_16x4_haswell.S).
 
 Mir GLAS (Generic Linear Algebra Subprograms) has a single generic kernel for all CPU targets, all floating point types, and all complex types.
