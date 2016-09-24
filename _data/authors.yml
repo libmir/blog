@@ -2,10 +2,12 @@
     name: Ilya Yaroshenko
     github: https://github.com/9il
     web: https://www.linkedin.com/in/ilya-yaroshenko-46464993
-    bio: Ilya is IT consultant, statistician. He has experience in distributed High Load services, business process analyses. He is the author of <code>std.experimental.ndslice</code> and Mir founder.
-         He was a GSoC mentor for the D Language Foundation and Mir project.
+    bio: Ilya is an IT consultant with a background in statistics.
+        He has experience in distributed high-load services and business process analyses.
+        He is the creator of the Mir library, including std.experimental.ndslice in the D Standard Library.
+        He mentored a related GSoC project for the D Language Foundation.
 
-    avatar: https://avatars3.githubusercontent.com/u/845083
+    avatar: images/9il.jpg
 
 wilzbach:
     name: Sebastian Wilzbach

@@ -6,20 +6,20 @@ author: 9il
 categories: glas benchmark openblas
 ---
 
-The post represents performance benchmark for general matrix-matrix multiplication
+This post presents performance benchmarks for general matrix-matrix multiplication
 between [Mir.GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com/xianyi/OpenBLAS),
 and two closed source BLAS implementations from Intel and Apple.
 
-OpenBLAS is the default BLAS implementation for most of numerical and scientific projects, for example [Julia Programing Language](http://julialang.org/).
+OpenBLAS is the default BLAS implementation for most numerical and scientific projects, for example the [Julia Programing Language](http://julialang.org/).
 OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) computation kernels [were written in assembler](https://github.com/xianyi/OpenBLAS/blob/develop/kernel/x86_64/sgemm_kernel_16x4_haswell.S).
 
-Mir GLAS is [LLVM](http://llvm.org)-accelerated Generic Linear Algebra Subroutines. It has single generic kernel for all targets, all floating point and complex types.
+Mir GLAS (Generic Linear Algebra Subprograms) has a single generic kernel for all CPU targets, all floating point types, and all complex types.
 It is written completely in D for [LDC](https://github.com/ldc-developers/ldc) (LLVM D Compiler), without any assembler blocks.
-In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code.
+In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code, so they put less pressure on the instruction cache in large applications.
 
 Mir GLAS is truly generic comparing with C++ [Eigen](http://eigen.tuxfamily.org/).
-To add new architecture or target an engineer just needs to extend small GLAS configuration file.
-As of October 2016 configuration is available for X87, SSE2, AVX, and AVX2 instruction sets.
+To add a new architecture or target an engineer just needs to extend one small GLAS configuration file.
+As of October 2016 configurations are available for X87, SSE2, AVX, and AVX2 instruction sets.
 
 ### Machine and software
 
@@ -67,6 +67,6 @@ Higher is better.
 
 ### Conclusion
 
-Mir GLAS is significantly faster then OpenBLAS and Apple Accelerate for almost all cases.
+Mir GLAS is significantly faster then OpenBLAS and Apple Accelerate for virtually all benchmarks and parameters.
 Mir GLAS average performance equals to Intel MKL, which is the best for Intel CPUs.
 Due to its simple and generic architecture it can be easily configured for new targets.
