@@ -1,5 +1,5 @@
 ---
-title: "Numeric age for D: Mir GLAS is faster then OpenBLAS and Eigen"
+title: "Numeric age for D: Mir GLAS is faster than OpenBLAS and Eigen"
 layout: post
 date: 2016-09-23
 author: 9il
