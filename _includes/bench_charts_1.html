@@ -86,26 +86,26 @@ var apple_cdouble_norm = new Array(sizes.length);
 
 for(var i = 0; i < sizes.length; i++)
 {
-    mir_single_norm[i] = mir_single[i] / mir_single[i] * 100;
-    eigen_single_norm[i] = eigen_single[i] / mir_single[i] * 100;
-    openblas_single_norm[i] = openblas_single[i] / mir_single[i] * 100;
-    intel_single_norm[i] = intel_single[i] / mir_single[i] * 100;
-    apple_single_norm[i] = apple_single[i] / mir_single[i] * 100;
-    mir_double_norm[i] = mir_double[i] / mir_double[i] * 100;
-    eigen_double_norm[i] = eigen_double[i] / mir_double[i] * 100;
-    openblas_double_norm[i] = openblas_double[i] / mir_double[i] * 100;
-    intel_double_norm[i] = intel_double[i] / mir_double[i] * 100;
-    apple_double_norm[i] = apple_double[i] / mir_double[i] * 100;
-    mir_csingle_norm[i] = mir_csingle[i] / mir_csingle[i] * 100;
-    eigen_csingle_norm[i] = eigen_csingle[i] / mir_csingle[i] * 100;
-    openblas_csingle_norm[i] = openblas_csingle[i] / mir_csingle[i] * 100;
-    intel_csingle_norm[i] = intel_csingle[i] / mir_csingle[i] * 100;
-    apple_csingle_norm[i] = apple_csingle[i] / mir_csingle[i] * 100;
-    mir_cdouble_norm[i] = mir_cdouble[i] / mir_cdouble[i] * 100;
-    eigen_cdouble_norm[i] = eigen_cdouble[i] / mir_cdouble[i] * 100;
-    openblas_cdouble_norm[i] = openblas_cdouble[i] / mir_cdouble[i] * 100;
-    intel_cdouble_norm[i] = intel_cdouble[i] / mir_cdouble[i] * 100;
-    apple_cdouble_norm[i] = apple_cdouble[i] / mir_cdouble[i] * 100;
+    mir_single_norm[i] = Math.trunc(mir_single[i] / mir_single[i] * 1000) / 10;
+    eigen_single_norm[i] = Math.trunc(eigen_single[i] / mir_single[i] * 1000) / 10;
+    openblas_single_norm[i] = Math.trunc(openblas_single[i] / mir_single[i] * 1000) / 10;
+    intel_single_norm[i] = Math.trunc(intel_single[i] / mir_single[i] * 1000) / 10;
+    apple_single_norm[i] = Math.trunc(apple_single[i] / mir_single[i] * 1000) / 10;
+    mir_double_norm[i] = Math.trunc(mir_double[i] / mir_double[i] * 1000) / 10;
+    eigen_double_norm[i] = Math.trunc(eigen_double[i] / mir_double[i] * 1000) / 10;
+    openblas_double_norm[i] = Math.trunc(openblas_double[i] / mir_double[i] * 1000) / 10;
+    intel_double_norm[i] = Math.trunc(intel_double[i] / mir_double[i] * 1000) / 10;
+    apple_double_norm[i] = Math.trunc(apple_double[i] / mir_double[i] * 1000) / 10;
+    mir_csingle_norm[i] = Math.trunc(mir_csingle[i] / mir_csingle[i] * 1000) / 10;
+    eigen_csingle_norm[i] = Math.trunc(eigen_csingle[i] / mir_csingle[i] * 1000) / 10;
+    openblas_csingle_norm[i] = Math.trunc(openblas_csingle[i] / mir_csingle[i] * 1000) / 10;
+    intel_csingle_norm[i] = Math.trunc(intel_csingle[i] / mir_csingle[i] * 1000) / 10;
+    apple_csingle_norm[i] = Math.trunc(apple_csingle[i] / mir_csingle[i] * 1000) / 10;
+    mir_cdouble_norm[i] = Math.trunc(mir_cdouble[i] / mir_cdouble[i] * 1000) / 10;
+    eigen_cdouble_norm[i] = Math.trunc(eigen_cdouble[i] / mir_cdouble[i] * 1000) / 10;
+    openblas_cdouble_norm[i] = Math.trunc(openblas_cdouble[i] / mir_cdouble[i] * 1000) / 10;
+    intel_cdouble_norm[i] = Math.trunc(intel_cdouble[i] / mir_cdouble[i] * 1000) / 10;
+    apple_cdouble_norm[i] = Math.trunc(apple_cdouble[i] / mir_cdouble[i] * 1000) / 10;
 }
 
 $('#chart_single').highcharts({
