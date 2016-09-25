@@ -31,20 +31,43 @@ As of October 2016 configurations are available for the X87, SSE2, AVX, and AVX2
 | Mir GLAS | 0.18.0, single thread |
 | OpenBLAS | 0.2.18, single thread |
 | Eigen | 3.3-rc1, single thread (sequential configurations) |
-| Intel MKL | 2016, single thread (sequential configurations) |
+| Intel MKL | 2017.0.098, single thread (sequential configurations) |
 | Apple Accelerate | OS X 10.11.6, single thread (sequential configurations) |
 
 #### Source code
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
+It contains Mir vs a CBLAS implementation benchmark.
 
 Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is a development version of 
 [std.experimental.ndslice](http://dlang.org/phobos/std_experimental_ndslice.html).
-
+GLAS uses [`Slice!(2, T*)`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.Slice) for matrix representation. It is a plain structure
+composed of two lengths, two strides, and a pointer type of `T*`.
+GLAS calling conversion can be easily used in any programming language with C ABI support.
 
 ```d
 // Performs: c := alpha a x b + beta c
 // glas is a pointer to a GlasContext
 glas.gemm(alpha, a, b, beta, c);
+```
+
+In the same time, CBLAS interface is unwieldy
+
+```d
+void cblas_sgemm (
+	const CBLAS_LAYOUT layout,
+	const CBLAS_TRANSPOSE TransA,
+	const CBLAS_TRANSPOSE TransB,
+	const int M,
+	const int N,
+	const int K,
+	const float alpha,
+	const float *A,
+	const int lda,
+	const float *B,
+	const int ldb,
+	const float beta,
+	float *C,
+	const int ldc)
 ```
 
 #### Environment variables to set single thread for cblas
