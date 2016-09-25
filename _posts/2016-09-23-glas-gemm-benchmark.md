@@ -28,10 +28,11 @@ As of October 2016 configurations are available for the X87, SSE2, AVX, and AVX2
 | RAM | 16 GB of 1600 MHz DDR3L SDRAM |
 | Model Identifier | MacBookPro11,2 |
 | OS | OS X 10.11.6 |
-| Mir GLAS | v0.18.0, native target, single thread |
-| OpenBLAS | v0.2.18, native target, single thread |
-| Intel MKL | 2016, native target, single thread (sequential configurations) |
-| Apple Accelerate | OS X 10.11.6, native target, single thread (sequential configurations) |
+| Mir GLAS | 0.18.0, single thread |
+| OpenBLAS | 0.2.18, single thread |
+| Eigen | 3.3-rc1, single thread (sequential configurations) |
+| Intel MKL | 2016, single thread (sequential configurations) |
+| Apple Accelerate | OS X 10.11.6, single thread (sequential configurations) |
 
 #### Source code
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
@@ -54,6 +55,18 @@ glas.gemm(alpha, a, b, beta, c);
 
 OpenBLAS and Intel MKL have sequential configurations. Sequential configuration is preferred for benchmarks.
 
+#### Building Eigen
+
+Eigen should be built with `EIGEN_TEST_AVX` and `EIGEN_TEST_FMA` flags:
+```
+mkdir build_dir
+cd build_dir
+cmake -DCMAKE_BUILD_TYPE=Release -DEIGEN_TEST_AVX=ON -DEIGEN_TEST_FMA=ON ..
+make blas
+```
+Eigen 3.3-rc1 provides the Fortran BLAS interface.
+[Netlib's CBLAS](http://www.netlib.org/blas/#_cblas) library can be used for the benchmark to provide CBLAS interface on top of Eigen.
+
 ### Results
 
 There are eight charts:
@@ -73,4 +86,4 @@ Mir GLAS average performance equals to Intel MKL, which is the best for Intel CP
 Due to its simple and generic architecture it can be easily configured for new targets.
 
 ### Acknowledgements
-Andrei Alexandrescu.
+Andrei Alexandrescu, Martin Nowak, Johan Engelen.
