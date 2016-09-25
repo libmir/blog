@@ -8,7 +8,7 @@ categories: glas benchmark openblas
 
 This post presents performance benchmarks for general matrix-matrix multiplication
 between [Mir.GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com/xianyi/OpenBLAS),
-and two closed source BLAS implementations from Intel and Apple.
+[Eigen](http://eigen.tuxfamily.org/), and two closed source BLAS implementations from Intel and Apple.
 
 OpenBLAS is the default BLAS implementation for most numeric and scientific projects, for example the [Julia Programing Language](http://julialang.org/) and [NumPy](http://www.numpy.org/).
 The OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) computation kernels [were written in assembler](https://github.com/xianyi/OpenBLAS/blob/develop/kernel/x86_64/sgemm_kernel_16x4_haswell.S).
@@ -17,7 +17,7 @@ Mir GLAS (Generic Linear Algebra Subprograms) has a single generic kernel for al
 It is written completely in D for [LDC](https://github.com/ldc-developers/ldc) (LLVM D Compiler), without any assembler blocks.
 In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code, so they put less pressure on the instruction cache in large applications.
 
-Mir GLAS is truly generic comparing with C++ [Eigen](http://eigen.tuxfamily.org/).
+Mir GLAS is truly generic comparing with C++ Eigen.
 To add a new architecture or target, an engineer just needs to extend one small GLAS configuration file.
 As of October 2016 configurations are available for the X87, SSE2, AVX, and AVX2 instruction sets.
 
