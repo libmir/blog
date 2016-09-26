@@ -1,8 +1,7 @@
 title: The Mir Blog
 email: ilyayaroshenko@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  The Mir Blog. Stay in touch with the lastest developments
-  in scientific computing for D.
+  The Mir Blog.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://blog.mir.dlang.io" # the base hostname & protocol for your site
 twitter_username: libmir
