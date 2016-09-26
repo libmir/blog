@@ -38,8 +38,9 @@ As of October 2016 configurations are available for the X87, SSE2, AVX, and AVX2
 The benchmark source code can be found [here](https://github.com/libmir/mir/blob/master/benchmarks/glas/gemm_report.d).
 It contains Mir vs a CBLAS implementation benchmark.
 
-Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is a development version of 
-[std.experimental.ndslice](http://dlang.org/phobos/std_experimental_ndslice.html).
+Mir GLAS has a native `mir.ndslice` interface. `mir.ndslice` is a development version of 
+[std.experimental.ndslice](http://dlang.org/phobos/std_experimental_ndslice.html),
+which provides an N-dimensional equivalent of D's built-in array slicing.
 GLAS uses [`Slice!(2, T*)`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.Slice) for matrix representation. It is a plain structure
 composed of two lengths, two strides, and a pointer type of `T*`.
 GLAS calling convention can be easily used in any programming language with C ABI support.
@@ -110,4 +111,4 @@ Mir GLAS average performance equals to Intel MKL, which is the best for Intel CP
 Due to its simple and generic architecture it can be easily configured for new targets.
 
 ### Acknowledgements
-Andrei Alexandrescu, Martin Nowak, Johan Engelen, Ali Çehreli.
+Andrei Alexandrescu, Martin Nowak, Johan Engelen, Ali Çehreli, Joseph Rushton Wakeling.
