@@ -113,4 +113,4 @@ Mir GLAS average performance equals to Intel MKL, which is the best for Intel CP
 Due to its simple and generic architecture it can be easily configured for new targets.
 
 ### Acknowledgements
-Andrei Alexandrescu, Martin Nowak, Johan Engelen, Ali Çehreli, Joseph Rushton Wakeling.
+Andrei Alexandrescu, Martin Nowak, Mike Parker, Johan Engelen, Ali Çehreli, Joseph Rushton Wakeling.
