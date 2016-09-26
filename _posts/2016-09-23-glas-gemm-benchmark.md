@@ -42,7 +42,7 @@ Mir GLAS has native `mir.ndslice` interface. `mir.ndslice` is a development vers
 [std.experimental.ndslice](http://dlang.org/phobos/std_experimental_ndslice.html).
 GLAS uses [`Slice!(2, T*)`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.Slice) for matrix representation. It is a plain structure
 composed of two lengths, two strides, and a pointer type of `T*`.
-GLAS calling conversion can be easily used in any programming language with C ABI support.
+GLAS calling convention can be easily used in any programming language with C ABI support.
 
 ```d
 // Performs: c := alpha a x b + beta c
@@ -50,7 +50,7 @@ GLAS calling conversion can be easily used in any programming language with C AB
 glas.gemm(alpha, a, b, beta, c);
 ```
 
-In the same time, CBLAS interface is unwieldy
+On the other hand, CBLAS interface is unwieldy
 
 ```d
 void cblas_sgemm (
@@ -93,10 +93,10 @@ Eigen 3.3-rc1 provides the Fortran BLAS interface.
 ### Results
 
 There are eight charts:
- - single precisions numbers x2
- - double precisions numbers x2
- - single precisions complex numbers x2
- - double precisions complex numbers x2
+ - single precision numbers x2
+ - double precision numbers x2
+ - single precision complex numbers x2
+ - double precision complex numbers x2
 
 Higher is better.
 
@@ -110,4 +110,4 @@ Mir GLAS average performance equals to Intel MKL, which is the best for Intel CP
 Due to its simple and generic architecture it can be easily configured for new targets.
 
 ### Acknowledgements
-Andrei Alexandrescu, Martin Nowak, Johan Engelen.
+Andrei Alexandrescu, Martin Nowak, Johan Engelen, Ali Çehreli.
