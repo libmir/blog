@@ -13,7 +13,7 @@ between [Mir GLAS](https://github.com/libmir/mir), [OpenBLAS](https://github.com
 OpenBLAS is the default BLAS implementation for most numeric and scientific projects, for example the [Julia Programing Language](http://julialang.org/) and [NumPy](http://www.numpy.org/).
 The OpenBLAS [Haswell](https://en.wikipedia.org/wiki/Haswell_(microarchitecture)) computation kernels [were written in assembler](https://github.com/xianyi/OpenBLAS/blob/develop/kernel/x86_64/sgemm_kernel_16x4_haswell.S).
 
-Mir is [LLVM](http://llvm.org/)-Accelerated Generic Numerical Library for Science and Machine Learning. It requires [LDC](https://github.com/ldc-developers/ldc) (LLVM D Compiler) for compilation.
+Mir is an [LLVM](http://llvm.org/)-Accelerated Generic Numerical Library for Science and Machine Learning. It requires [LDC](https://github.com/ldc-developers/ldc) (LLVM D Compiler) for compilation.
 Mir GLAS (Generic Linear Algebra Subprograms) has a single generic kernel for all CPU targets, all floating point types, and all complex types.
 It is written completely in D, without any assembler blocks.
 In addition, Mir GLAS Level 3 kernels are not unrolled and produce tiny binary code, so they put less pressure on the instruction cache in large applications.
