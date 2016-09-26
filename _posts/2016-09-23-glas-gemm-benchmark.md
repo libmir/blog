@@ -93,7 +93,7 @@ Eigen 3.3-rc1 provides the Fortran BLAS interface.
 
 ### Results
 
-There are eight charts:
+There are eight charts (two charts per benchmark):
  - single precision numbers x2
  - double precision numbers x2
  - single precision complex numbers x2
