@@ -48,8 +48,7 @@ GLAS calling convention can be easily used in any programming language with C AB
 
 ```d
 // Performs: c := alpha a x b + beta c
-// glas is a pointer to a GlasContext
-glas.gemm(alpha, a, b, beta, c);
+gemm(alpha, a, b, beta, c);
 ```
 
 On the other hand, CBLAS interface is unwieldy
