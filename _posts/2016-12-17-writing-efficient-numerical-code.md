@@ -1,7 +1,7 @@
 ---
 title: "Writing efficient numerical code in D"
 layout: post
-date: 2016-12-11
+date: 2016-12-17
 author: ljubobratovicrelja
 categories: ndslice algorithm optimization
 ---
