@@ -339,9 +339,7 @@ growing our young **scientific ecosystem in D**!
 -------------------------------------------------------------------------
 <small><a name="footndslice"></a>[1] [*std.experimental.ndslice*](https://dlang.org/phobos/std_experimental_ndslice.html)
 is the package providing structures and tools for multidimensional data processing. [*mir.ndslice*](https://github.com/libmir/mir#notes)
-is the development version of `std.experimental.ndslice` in [**Mir**](https://github.com/libmir/mir), Generic Numerical Library for
-Science and Machine Learning. Note that `mir.ndslice` package will be removed from `Mir`, and `std.experimental.ndslice` will
-be used instead, as soon as LDC implements Phobos library changes from [DMD version 2.072.0](http://dlang.org/changelog/2.072.0.html).
+is the development version of `std.experimental.ndslice` in [**Mir**](https://github.com/libmir/mir), Generic Numerical Library for Science and Machine Learning. Note that `mir.ndslice` and `std.experimental.ndslice` will
+removed and a new replacement will be provided as solid integrated solution to replace [*ndslice*], [*std.algorithm*], and [*std.range*].
 
-<small><a name="footldcversion"></a>[2] Mir works with LDC compilers of version 1.1.0 beta 2 and later, with exception of beta 3, because of
-some regressions.</small>
+<small><a name="footldcversion"></a>[2] Mir works with LDC compilers of version 1.1.0 beta 5 and later.</small>
