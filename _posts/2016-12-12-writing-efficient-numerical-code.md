@@ -341,6 +341,6 @@ growing our young **scientific ecosystem in D**!
 <small><a name="footndslice"></a>[1] [*std.experimental.ndslice*](https://dlang.org/phobos/std_experimental_ndslice.html)
 is the package providing structures and tools for multidimensional data processing. [*mir.ndslice*](https://github.com/libmir/mir#notes)
 is the development version of `std.experimental.ndslice` in [**Mir**](https://github.com/libmir/mir), Generic Numerical Library for Science and Machine Learning. Note that `mir.ndslice` and `std.experimental.ndslice` will
-removed and a new replacement will be provided as solid integrated solution to replace [*ndslice*], [*std.algorithm*], and [*std.range*].
+removed and a new replacement will be provided as solid integrated solution to replace [*ndslice*], [*std.algorithm*], and [*std.range*]. The Future Mir Std library would not need `Yes.vectorized` and `Yes.fastmath` flags.
 
 <small><a name="footldcversion"></a>[2] Mir works with LDC compilers of version 1.1.0 beta 5 and later.</small>
