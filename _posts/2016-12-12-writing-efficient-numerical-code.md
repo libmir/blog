@@ -240,7 +240,7 @@ so we could evaluate it lazily afterwards.
 
 ### Comparison
 
-Complete benchmark source is located in the [Mir benchmark section](https://github.com/ljubobratovicrelja/mir/blob/ndslice-algorithm-benchmarks/benchmarks/ndslice/convolution.d).
+Complete benchmark source is located in the [Mir benchmark section](https://github.com/libmir/mir/blob/master/benchmarks/ndslice/convolution.d).
 Let's compile this program, and make a comparison:
 
 ```
@@ -314,7 +314,7 @@ We can notice right away there's a change in the assertion check in the input co
 this so. This means one of these slices should not be non-contiguous. We can also notice `byElement` is not used in
 this instance.
 
-Now, let's examine performance differences by running the [benchmark program](https://github.com/ljubobratovicrelja/mir/blob/ndslice-algorithm-benchmarks/benchmarks/ndslice/binarization.d).
+Now, let's examine performance differences by running the [benchmark program](https://github.com/libmir/mir/blob/master/benchmarks/ndslice/binarization.d).
 On my machine result is following:
 
 ```d
