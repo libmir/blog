@@ -1,7 +1,7 @@
 ---
 title: "Writing efficient numerical code in D"
 layout: post
-date: 2016-12-17
+date: 2016-12-11
 author: ljubobratovicrelja
 categories: ndslice algorithm optimization
 ---
@@ -136,11 +136,11 @@ basis of that *DCV* refactoring I've mentioned. Say we have following code, writ
 loops:
 
 ```d
-Slice!(2, float*) image; // initialized elsewhere...
-
-for(size_t r; r < image.length!0; ++r) {
-    for(size_t c; c < image.length!1; ++c) {
-        // perform some processing
+@fastmath void someFunc(Slice!(2, float*) image) {
+    for(size_t r; r < image.length!0; ++r) {
+        for(size_t c; c < image.length!1; ++c) {
+            // perform some processing on image pixel at [r, c]
+        }
     }
 }
 ```
@@ -150,19 +150,20 @@ for(size_t r; r < image.length!0; ++r) {
 ```d
 import mir.ndslice.algorithm : ndEach;
 
-image.ndEach!( (ref v)
+@fastmath void kernel(ref float e)
 {
-    /* perform that processing from inside those loops */
-}, Yes.vectorized, Yes.fastmath );
+    // perform that processing from inside those loops
+}
+
+image.ndEach!(kernel, Yes.vectorized);
 ```
 
+So, instead of writing a function over the whole image, we could utilize [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
+to apply given kernel function to each pixel. Parameter `Yes.vectorized` is telling the compiler to try to vectorize the operation using
+[SIMD](https://en.wikipedia.org/wiki/SIMD) instructions, giving it significant performance boost on modern CPU architectures.
 As said in the docs, [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
 iterates eagerly over the data. If processing should be rather evaluated lazily, we could utilize
 [`mapSlice`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#mapSlice).
-
-Now, you must have noticed that `Yes.vectorized, Yes.fastmath` part of template input to `ndEach` -
-these are flags telling *LDC* to try to vectorize given kernel, and to apply unsafe
-(but fast) floating point operations in it. These are providing our engine some raw horsepower!
 
 ### Convolution
 
