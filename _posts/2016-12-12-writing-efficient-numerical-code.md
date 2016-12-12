@@ -13,7 +13,7 @@ module equipped with iteration tools to allow convenient and fast processing of
 multidimensional data. More importantly, I'd like to show some examples of it's usage, and how it can be easily utilized to
 significantly improve performance of your numerical code.
 
-*Disclamer: It is assumed the reader is already somewhat familiar with ndslice
+*Note: It is assumed the reader is already somewhat familiar with ndslice
 package <sup>[[1](#footndslice)]</sup>.*
 
 ### What does it offer?
@@ -159,7 +159,7 @@ image.ndEach!(kernel, Yes.vectorized);
 ```
 
 So, instead of writing a function over the whole image, we could utilize [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
-to apply given kernel function to each pixel. Parameter `Yes.vectorized` is telling the compiler to try to vectorize the operation using
+to apply given kernel function to each pixel. Parameter `Yes.vectorized`  <sup>[[3](#footfm)]</sup> is telling the compiler to try to vectorize the operation using
 [SIMD](https://en.wikipedia.org/wiki/SIMD) instructions, giving it significant performance boost on modern CPU architectures.
 As said in the docs, [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
 iterates eagerly over the data. If processing should be rather evaluated lazily, we could utilize
@@ -338,9 +338,17 @@ it's submodules. And, I hope this post will inspire people to give it a spin, so
 growing our young **scientific ecosystem in D**!
 
 -------------------------------------------------------------------------
-<small><a name="footndslice"></a>[1] [*std.experimental.ndslice*](https://dlang.org/phobos/std_experimental_ndslice.html)
+<small>
+
+<a name="footndslice"></a>[1] [*std.experimental.ndslice*](https://dlang.org/phobos/std_experimental_ndslice.html)
 is the package providing structures and tools for multidimensional data processing. [*mir.ndslice*](https://github.com/libmir/mir#notes)
 is the development version of `std.experimental.ndslice` in [**Mir**](https://github.com/libmir/mir), Generic Numerical Library for Science and Machine Learning. Note that `mir.ndslice` and `std.experimental.ndslice` will
-removed and a new replacement will be provided as solid integrated solution to replace `ndslice`, `std.algorithm`, and `std.range`. The Future Mir Std library would not need `Yes.vectorized` and `Yes.fastmath` flags.
+removed and a new replacement will be provided as solid integrated solution to replace `ndslice`, `std.algorithm`, and `std.range`.
 
-<small><a name="footldcversion"></a>[2] Mir works with LDC compilers of version 1.1.0 beta 5 and later.</small>
+<a name="footldcversion"></a>[2]
+Mir works with LDC compilers of version 1.1.0 beta 5 and later.
+
+<a name="footfm"></a>[3] 
+The Future Mir Std library would not need `Yes.vectorized` and `Yes.fastmath` flags.
+
+</small>
