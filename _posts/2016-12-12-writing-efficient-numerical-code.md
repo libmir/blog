@@ -223,13 +223,12 @@ void convAlgorithm(Slice!(2, F*) input, Slice!(2, F*) output, Slice!(2, F*) kern
 As you can see, we are replacing two double loops with few magic calls:
 
 - [windows](http://dlang.org/phobos/std_experimental_ndslice_selection.html#windows): Convenient selector, allows us
-to look at each pixel through kernel-sized window. It is effectively replacing first two loops in c-style function,
-and also, automatically giving us the window slice.
+to look at each pixel through kernel-sized window. It is effectively replacing first two loops in c-style function, automatically giving us the window slice.
 - [mapSlice](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#mapSlice): mapping multidimensional slice by given
 lambda.
 - [ndReduce](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndReduce): apply reduce algorithm on each element of the window,
 multiplying it with convolution kernel (mask) values. This is replacing third and fourth loop from first function.
-This could also the key part in performance upgrade, since its asking the compiler to vectorize given operation.
+This could also be the key for performance improvement, since its asking the compiler to vectorize given operation.
 
 ### Lazy evaluation?
 
