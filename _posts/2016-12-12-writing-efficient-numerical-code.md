@@ -93,13 +93,13 @@ you'll notice most of them are implemented naively, without extensive optimizati
 
 ## Examples
 
-I'd like to show few examples of `mir.ndslice.algorithm`, but first let's take a look at the basic principle of replacing loop-based code with pipelines efficiently. And later
+We'd like to show few examples of `mir.ndslice.algorithm`, but first let's take a look at the basic principle of replacing loop-based code with pipelines efficiently. And later
 on we'll see how it can be used in a bit more complex algorithms.
 
 ### Basics
 
 So, let's first examine the basic principle of utilizing iteration algorithms. This principle is also the
-basis of that *DCV* refactoring I've mentioned. Say we have following code, written plainly in C-style
+basis of that *DCV* refactoring we've mentioned. Say we have following code, written plainly in C-style
 loops:
 
 ```d
@@ -199,7 +199,7 @@ This could also be the key for performance improvement, since its asking the com
 
 ### Lazy evaluation?
 
-We've said previously that `mapSlice` is evaluated lazily. At the end of the `convAlgorithm`
+As it is previously noted, `mapSlice` is evaluated lazily. At the end of the `convAlgorithm`
 function, we are evaluating the mapping function to the data, and assigning resulting values to the output buffer.
 If instead we had needed lazy evaluated convolution, we could have just returned `mapping` value from the function,
 so we could evaluate it lazily afterwards.
@@ -213,7 +213,7 @@ Let's compile this program, and make a comparison:
 dub run --build=release-nobounds --compiler=ldmd2 --single convolution.d
 ```
 
-Output on my machine is:
+Output is:
 
 ```
 Running ./convolution
@@ -221,7 +221,7 @@ Running ./convolution
      mir.ndslice.algorithm = 159 ms, 392 μs, and 9 hnsecs
 ```
 
-So, for as little effort as this, I get **~10x speedup**! And hopefully many would agree that the variant written with
+So, for as little effort as this, we get **~10x speedup**! And hopefully many would agree that the variant written with
 `mir.ndslice.algorithm` is **much cleaner and less error prone**!
 
 ### Zipped tensors
@@ -296,8 +296,8 @@ with `ndslice` iteration algorithms.
 In these two examples we've achieved some nice performance improvements with very little effort by using `mir.ndslice.algorithm`,
 and other `ndslice` utilities. We have also seen the improvement could be even better if `mir.ndslice.algorithm` solutions are
 applied to more complex code you might encounter in numerical library such as *DCV*.
-I personally would argue that every newcomer to D, having an interest in numerical computing, should take a close look at `ndslice` and
-its submodules. And, I hope this post will inspire people to give it a spin, so we would have some more projects built on top of it,
+We would argue that every newcomer to D, having an interest in numerical computing, should take a close look at `ndslice` and
+its submodules. And, we hope this post will inspire people to give it a spin, so we would have some more projects built on top of it,
 growing our young **scientific ecosystem in D**!
 
 -------------------------------------------------------------------------
