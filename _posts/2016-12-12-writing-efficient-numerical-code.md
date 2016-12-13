@@ -8,40 +8,39 @@ categories: ndslice algorithm optimization
 
 ## Introduction
 
-In this post I'd like give a brief overview of [`mir.ndslice.algorithm`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html),
-module equipped with iteration tools to allow convenient and fast processing of
-multidimensional data. More importantly, I'd like to show some examples of it's usage, and how it can be easily utilized to
-significantly improve performance of your numerical code.
+This post gives a brief overview of [`mir.ndslice.algorithm`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html),
+module that provides iteration tools to allow convenient and fast processing of
+multidimensional data. It also presents some examples of usage, to demonstrate how this module can be easily utilized to
+significantly improve performance of numerical code written in D.
 
-*Note: It is assumed the reader is already somewhat familiar with ndslice
-package <sup>[[1](#footndslice)]</sup>.*
+*This article assumes the reader has a cursory understanding of the ndslice package <sup>[[1](#footndslice)]</sup>. If not, please consult [this](https://dlang.org/phobos/std_experimental_ndslice.html) before returning here.*
 
-### What does it offer?
+### What does *mir.ndslice.algorithm* offer?
 
 `mir.ndslice.algorithm` module offers some basic multidimensional iteration algorithms, often seen in functional style programming, such as
 [map](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#mapSlice), [fold](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndFold), [reduce](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndReduce), etc. There is a good amount of such [algorithms](http://dlang.org/phobos/std_algorithm_iteration.html)
 already implemented in [Phobos](https://github.com/dlang/phobos), D's standard library, that are being used with great
-success for some time now. What is special about `mir.ndslice.algorithm`, is that its integrated seamlessly
-with rest of the *ndslice* package, by that allowing more natural flow of processing pipeline.
+success for some time now. What is special about `mir.ndslice.algorithm`, is that it is integrated seamlessly
+with rest of the *ndslice* package, which makes for elegantly flowing processing pipelines.
 
 ### LLVM acceleration
 
-One of key components to make code based on `mir.ndslice.algorithm` blazingly fast, is to compile it with
-*[LDC](https://github.com/ldc-developers/ldc)*, *LLVM* based D compiler<sup>[[2](#footldcversion)]</sup>.
-Iteration algorithms in *ndslice* have been specially tailored to help *LDC* auto-vectorize kernels you write,
-and also to apply unsafe floating point operations, else turned on with
+One key component that makes code based on `mir.ndslice.algorithm` blazingly fast, is to compile it with
+*[LDC](https://github.com/ldc-developers/ldc)*, the *LLVM* based D compiler<sup>[[2](#footldcversion)]</sup>.
+Iteration algorithms in *ndslice* have been specially tailored to help *LDC* auto-vectorize computation kernels written by the end user,
+and also to apply unsafe floating point operations, turned on with
 [`@fastmath`](https://wiki.dlang.org/LDC-specific_language_changes#Attributes) attribute in *LDC*.
 For more info on *LDC's* optimization techniques, you can check out
-[this great article](http://johanengelen.github.io/ldc/2016/10/11/Math-performance-LDC.html),
+[this great article](http://johanengelen.github.io/ldc/2016/10/11/Math-performance-LDC.html)
 by Johan Engelen.
 
 --------------------------------------------------------------------------------------------
 
 ## Application
 
-In past few months, we've been actively refactoring implementation details of [DCV](https://github.com/libmir/dcv),
+In past few months, the [Mir team](https://github.com/libmir) has been actively refactoring implementation details of [DCV](https://github.com/libmir/dcv),
 computer vision library written in D, by replacing critical processing parts written in loops, with `mir.ndslice.algorithm`
-equivalent. With minimal effort, we've managed to make code slightly cleaner, but more importantly - a lot faster!
+equivalents. With minimal effort, we've managed to make code slightly cleaner, but more importantly - a lot faster!
 
 All measuring presented in this post are made using following configuration:
 
@@ -53,80 +52,48 @@ All measuring presented in this post are made using following configuration:
 
 And here are the highlights from benchmarking comparison between before and after these refactorings:
 
-|------------------------------------------------------------------------------------------|
-| Algorithm                   | Previous Runtime [μs] | Current Runtime [μs] | Speedup [%] |
-|------------------------------------------------------------------------------------------|
-| harrisCorners (3x3) |1624687|278579|483 |
-|------------------------------------------------------------------------------------------|
-| harrisCorners (5x5) |4406410|328159|1242 |
-|------------------------------------------------------------------------------------------|
-| shiTomasiCorners (3x3)|1583896|223794|607 |
-|------------------------------------------------------------------------------------------|
-| shiTomasiCorners (5x5)|4422529|297106|1388 |
-|------------------------------------------------------------------------------------------|
-| extractCorners|3164128|355564|789 |
-|------------------------------------------------------------------------------------------|
-| threshold|124755|656|18917 |
-|------------------------------------------------------------------------------------------|
-| gray2rgb|441354|8918|4849 |
-|------------------------------------------------------------------------------------------|
-| hsv2rgb|433122|51392|742 |
-|------------------------------------------------------------------------------------------|
-| rgb2gray|262186|31813|724 |
-|------------------------------------------------------------------------------------------|
-| rgb2hsv|365969|65572|458 |
-|------------------------------------------------------------------------------------------|
-| convolution 1D (3) |124888|67486|85 |
-|------------------------------------------------------------------------------------------|
-| convolution 1D (5) |159795|68881|131 |
-|------------------------------------------------------------------------------------------|
-| convolution 1D (7)|206059|75361|173 |
-|------------------------------------------------------------------------------------------|
-| convolution 2D (3x3) |767058|120216|538 |
-|------------------------------------------------------------------------------------------|
-| convolution 2D (5x5)|1941055|360809|437 |
-|------------------------------------------------------------------------------------------|
-| convolution 2D (7x7)|3719552|865524|329 |
-|------------------------------------------------------------------------------------------|
-| convolution 3D (3x3)|2091025|374006|459 |
-|------------------------------------------------------------------------------------------|
-| convolution 3D (5x5)|5547364|1074208|416 |
-|------------------------------------------------------------------------------------------|
-| bilateralFilter (3x3)|6118754|1778482|244 |
-|------------------------------------------------------------------------------------------|
-| bilateralFilter (5x5)|16718651|4597027|263 |
-|------------------------------------------------------------------------------------------|
-| calcGradients|2244798|506101|343 |
-|------------------------------------------------------------------------------------------|
-| calcPartialDerivatives|428318|141520|202 |
-|------------------------------------------------------------------------------------------|
-| canny|4108987|758240|441 |
-|------------------------------------------------------------------------------------------|
-| filterNonMaximum|477543|38968|1125 |
-|------------------------------------------------------------------------------------------|
-| nonMaximaSupression|588455|84436|596 |
-|------------------------------------------------------------------------------------------|
-| remap|225780|62089|263 |
-|------------------------------------------------------------------------------------------|
-| warp|235169|63821|268 |
-|------------------------------------------------------------------------------------------|
+| Algorithm                   | Previous Runtime [s] | Current Runtime [s] | Speedup [%] |
+|-----------------------------|----------------------:|-------------------:|-----------------:|
+| harrisCorners (3x3) |1.62469|0.278579|483 |
+| harrisCorners (5x5) |4.40641|0.328159|1242 |
+| shiTomasiCorners (3x3)|1.5839|0.223794|607 |
+| shiTomasiCorners (5x5)|4.42253|0.297106|1388 |
+| extractCorners|3.16413|0.355564|789 |
+| gray2rgb|0.441354|0.008918|4849 |
+| hsv2rgb|0.433122|0.051392|742 |
+| rgb2gray|0.262186|0.031813|724 |
+| rgb2hsv|0.365969|0.065572|458 |
+| convolution 1D (3) |0.124888|0.067486|85 |
+| convolution 1D (5) |0.159795|0.068881|131 |
+| convolution 1D (7)|0.206059|0.075361|173 |
+| convolution 2D (3x3) |0.767058|0.120216|538 |
+| convolution 2D (5x5)|1.94106|0.360809|437 |
+| convolution 2D (7x7)|3.71955|0.865524|329 |
+| convolution 3D (3x3)|2.09103|0.374006|459 |
+| convolution 3D (5x5)|5.54736|1.07421|416 |
+| bilateralFilter (3x3)|6.11875|1.77848|244 |
+| bilateralFilter (5x5)|16.7187|4.59703|263 |
+| calcGradients|2.2448|0.506101|343 |
+| calcPartialDerivatives|0.428318|0.14152|202 |
+| canny|4.10899|0.75824|441 |
+| filterNonMaximum|0.477543|0.038968|1125 |
+| nonMaximaSupression|0.588455|0.084436|596 |
+| remap|0.22578|0.062089|263 |
+| warp|0.235169|0.063821|268 |
 
-As you can see, speedups are massive - average in this set is 1356.54%, or if written as multiplier:
-`mean(previous / current) = 14.57x`. But as I'll show you in this post, changes made to the algorithm implementations
-were trivial. If you'd like to see complete benchmarking results, please take a look at
-[PR](https://github.com/libmir/dcv/pull/58) implementing these changes.
+Speedups are massive - average in this set is 676.7%, or if written as multiplier: `mean(previous / current) = 7.7x`.
+But as shown below, changes made to the algorithm implementations were trivial. For the complete benchmarking results,
+    please take a look at the [pull request](https://github.com/libmir/dcv/pull/58) implementing these changes.
 
-*Discalmer: Please keep in mind DCV project is still far too young to be compared against proven computer vision toolkits such as
-OpenCV. Optimizations done here are showing power of `mir.ndslice.algorithm`, but if you dive into implementation of these algorithms,
-you'll notice most of them are implemented naively, without extensive optimization techniques applied. In future
-we'll focus on [separable filtering](https://github.com/libmir/dcv/issues/85), followed by cache locality improvement.*
+*Disclaimer: Please keep in mind the DCV project is still far too young to be compared against proven computer vision toolkits such as
+OpenCV. Optimizations done here are showing the power of `mir.ndslice.algorithm`, but if you dive into the implementation of these algorithms,
+you'll notice most of them are implemented naively, without extensive optimizations. A future post will focus on [separable filtering](https://github.com/libmir/dcv/issues/85), followed by cache locality improvement.*
 
 --------------------------------------------------------------------------------------------
 
 ## Examples
 
-I'd like to show few examples of `mir.ndslice.algorithm`, but first we'll take a
-look at the basic principle how it can efficiently replace loop-based code. And later
+I'd like to show few examples of `mir.ndslice.algorithm`, but first let's take a look at the basic principle of replacing loop-based code with pipelines efficiently. And later
 on we'll see how it can be used in a bit more complex algorithms.
 
 ### Basics
@@ -145,7 +112,7 @@ loops:
 }
 ```
 
-... This code can be rewritten like so:
+This code can be rewritten like so:
 
 ```d
 import mir.ndslice.algorithm : ndEach;
@@ -159,7 +126,7 @@ image.ndEach!(kernel, Yes.vectorized);
 ```
 
 So, instead of writing a function over the whole image, we could utilize [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
-to apply given kernel function to each pixel. Parameter `Yes.vectorized`  <sup>[[3](#footfm)]</sup> is telling the compiler to try to vectorize the operation using
+to apply the given kernel function to each pixel. Parameter `Yes.vectorized`  <sup>[[3](#footfm)]</sup> is telling the compiler to try to vectorize the operation using
 [SIMD](https://en.wikipedia.org/wiki/SIMD) instructions, giving it significant performance boost on modern CPU architectures.
 As said in the docs, [`ndEach`](http://docs.mir.dlang.io/latest/mir_ndslice_algorithm.html#ndEach)
 iterates eagerly over the data. If processing should be rather evaluated lazily, we could utilize
@@ -167,9 +134,9 @@ iterates eagerly over the data. If processing should be rather evaluated lazily,
 
 ### Convolution
 
-To bring this example more down to earth, let's examine how we would implement classic
+To make the example more concrete, let's examine how we would implement classic
 [image convolution](https://en.wikipedia.org/wiki/Kernel_(image_processing)#Convolution)
-with these algorithms. We'll write classic, C-style implementation, and it's analogue with `mir.ndslice.algorithm`.
+with these algorithms. We'll write classic, C-style implementation, and its analogue with `mir.ndslice.algorithm`.
 We will wrap both variants with `@fastmath` attribute, to be as fair as possible.
 Here is the most trivial C-style implementation:
 
@@ -220,7 +187,7 @@ void convAlgorithm(Slice!(2, F*) input, Slice!(2, F*) output, Slice!(2, F*) kern
 }
 ```
 
-As you can see, we are replacing two double loops with few magic calls:
+The pipeline version replaces two double loops with a few magic calls:
 
 - [windows](http://dlang.org/phobos/std_experimental_ndslice_selection.html#windows): Convenient selector, allows us
 to look at each pixel through kernel-sized window. It is effectively replacing first two loops in c-style function, automatically giving us the window slice.
@@ -232,7 +199,7 @@ This could also be the key for performance improvement, since its asking the com
 
 ### Lazy evaluation?
 
-We've said previously that `mapSlice` is evaluated lazily. And as you may have noticed, at the end of the `convAlgorithm`
+We've said previously that `mapSlice` is evaluated lazily. At the end of the `convAlgorithm`
 function, we are evaluating the mapping function to the data, and assigning resulting values to the output buffer.
 If instead we had needed lazy evaluated convolution, we could have just returned `mapping` value from the function,
 so we could evaluate it lazily afterwards.
@@ -254,13 +221,13 @@ Running ./convolution
      mir.ndslice.algorithm = 159 ms, 392 μs, and 9 hnsecs
 ```
 
-So, for as little effort as this, I get **~10x speedup**! And hopefully many would agree that variant written with
+So, for as little effort as this, I get **~10x speedup**! And hopefully many would agree that the variant written with
 `mir.ndslice.algorithm` is **much cleaner and less error prone**!
 
 ### Zipped tensors
 
 D offers two ways to zip multiple ranges: [zip](http://dlang.org/phobos/std_range.html#.zip) and [lockstep](http://dlang.org/phobos/std_range.html#.lockstep).
-Both of these functions provide easy-to-use syntax, and are very useful for common usage. Unfortunately, those are not so performance rewarding for multidimensional processing with `ndslice`. Instead, [`assumeSameStructure`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.assumeSameStructure) should be used.
+Both of these functions provide easy-to-use syntax and are very useful for common usage. Unfortunately, those are not so performance rewarding for multidimensional processing with `ndslice`. Instead, [`assumeSameStructure`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.assumeSameStructure) should be used.
 This function zips two [`Slice`](http://dlang.org/phobos/std_experimental_ndslice_slice.html#.Slice) objects of the same
 structure (shape and strides). It offers same dimension-wise range interface as `Slice` does (and by that is compatible with
 `mir.ndslice.algorithm`), and can perform faster than general purpose utilities `zip` and `lockstep`.
@@ -283,9 +250,7 @@ body
 }
 ```
 
-So, this is most basic binarization, based on given threshold. Special part to care about, related
-to `lockstep`, is that [`byElement`](http://dlang.org/phobos/std_experimental_ndslice_selection.html#.byElement)
-call on each input `Slice` - it returns element-wise iterable range. This range is really powerful - it
+So, this is a most basic binarization, based on given threshold. The call to [`byElement`](http://dlang.org/phobos/std_experimental_ndslice_selection.html#.byElement) inside `lockstep` is worth special attention - it returns element-wise iterable range. This range is really powerful - it
 works even with non-contiguous memory and multidimensional arrays. But because of the complexity of implementation
 which allows this, it can slow down performance considerably.
 
@@ -308,13 +273,12 @@ body
 }
 ```
 
-We can notice right away there's a change in the assertion check in the input contract of the function -
-`assert(output.structure == input.structure)`. As previously said, and as the name implies, `assumeSameStructure` requires
-this so. This means one of these slices should not be non-contiguous. We can also notice `byElement` is not used in
+First off, there's a change in the assertion check in the input contract of the function -
+`assert(output.structure == input.structure)`. As previously said, and as the name implies, `assumeSameStructure` assumes that is the case. This means one of these slices should not be non-contiguous. Notably, `byElement` is not used in
 this instance.
 
-Now, let's examine performance differences by running the [benchmark program](https://github.com/libmir/mir/blob/master/benchmarks/ndslice/binarization.d).
-On my machine result is following:
+Now, let's compare the impact of these changes on performance by running the [benchmark program](https://github.com/libmir/mir/blob/master/benchmarks/ndslice/binarization.d).
+The results are as follows:
 
 ```d
 Running ./binarization
@@ -329,11 +293,11 @@ with `ndslice` iteration algorithms.
 
 ## Conclusion
 
-In these two examples we've achieved some nice performance improvements with very little effort using `mir.ndslice.algorithm`,
+In these two examples we've achieved some nice performance improvements with very little effort by using `mir.ndslice.algorithm`,
 and other `ndslice` utilities. We have also seen the improvement could be even better if `mir.ndslice.algorithm` solutions are
 applied to more complex code you might encounter in numerical library such as *DCV*.
-I personally would argue that every newcomer to D, coming for some numerical computing, would **have** to be introduced to `ndslice` and
-it's submodules. And, I hope this post will inspire people to give it a spin, so we would have some more projects built on top of it,
+I personally would argue that every newcomer to D, having an interest in numerical computing, should take a close look at `ndslice` and
+its submodules. And, I hope this post will inspire people to give it a spin, so we would have some more projects built on top of it,
 growing our young **scientific ecosystem in D**!
 
 -------------------------------------------------------------------------
