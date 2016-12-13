@@ -34,11 +34,9 @@ For more info on *LDC's* optimization techniques, you can check out
 [this great article](http://johanengelen.github.io/ldc/2016/10/11/Math-performance-LDC.html)
 by Johan Engelen.
 
---------------------------------------------------------------------------------------------
-
 ## Application
 
-In past few months, the [Mir team](https://github.com/libmir) has been actively refactoring implementation details of [DCV](https://github.com/libmir/dcv),
+In past few months, [Mir team](https://github.com/libmir) has been actively refactoring implementation details of [DCV](https://github.com/libmir/dcv),
 computer vision library written in D, by replacing critical processing parts written in loops, with `mir.ndslice.algorithm`
 equivalents. With minimal effort, we've managed to make code slightly cleaner, but more importantly - a lot faster!
 
@@ -88,8 +86,6 @@ But as shown below, changes made to the algorithm implementations were trivial. 
 *Disclaimer: Please keep in mind the DCV project is still far too young to be compared against proven computer vision toolkits such as
 OpenCV. Optimizations done here are showing the power of `mir.ndslice.algorithm`, but if you dive into the implementation of these algorithms,
 you'll notice most of them are implemented naively, without extensive optimizations. A future post will focus on [separable filtering](https://github.com/libmir/dcv/issues/85), followed by cache locality improvement.*
-
---------------------------------------------------------------------------------------------
 
 ## Examples
 
@@ -289,8 +285,6 @@ Running ./binarization
 So, `assumeSameStructure` gives us about **4.5x** speedup. Also it is important to note this gives us interface compatible
 with `ndslice` iteration algorithms.
 
---------------------------------------------------------------------------------------------
-
 ## Conclusion
 
 In these two examples we've achieved some nice performance improvements with very little effort by using `mir.ndslice.algorithm`,
@@ -299,6 +293,10 @@ applied to more complex code you might encounter in numerical library such as *D
 We would argue that every newcomer to D, having an interest in numerical computing, should take a close look at `ndslice` and
 its submodules. And, we hope this post will inspire people to give it a spin, so we would have some more projects built on top of it,
 growing our young **scientific ecosystem in D**!
+
+## Acknowledgements
+
+Thanks to Ilya Yaroshenko, Sebastian Wilzbach, Andrei Alexandrescu and Johan Engelen for helping out with truly informative reviews!
 
 -------------------------------------------------------------------------
 <small><a name="footndslice"></a>[1] [*std.experimental.ndslice*](https://dlang.org/phobos/std_experimental_ndslice.html)
